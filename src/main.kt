@@ -43,7 +43,7 @@ fun details(x: Int,y: Int,z: String){
 //increments the withdrawals attribute after a successful withdrawal
 //(5poi
 
-class savingAccount(var accNo : Int, var name:String,var balan:Int, var withdrawals:Int ):current(accNo,name,balan){
+class savingAccount(var accNo.  : Int, var namr:String,var balanc:Int, var withdrawals:Int ):current(accNo,name,balan){
     fun with(withdraw:Int){
         if(withdraw < 4 ){
             println(withdraw)
