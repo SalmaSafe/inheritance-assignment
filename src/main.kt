@@ -1,71 +1,71 @@
 fun main(){
-    var sa= current(1036900,"mama",3000)
- deposit(200.50)
-    fruits("Banana")
-    var p=prod()
+    var mine=Current("1036900100","Mseee",5000.0)
+    mine.deposit(2000.0)
+    mine.withdraw(500.5)
+    mine.details()
+    var masaving=Savings("1036900100","Ule",50005,350)
+    masaving.deposit(3000.5)
+    masaving.withdraw(1000.5)
+    println( masaving.withdrawal)
+    masaving.details()
+    var a=Product("pads",12.0,20.0,"hygiene")
+    Products(a)
+    var b=Product("apple",3.0,25.5,"groceries")
+    Products(b)
+    var c=Product("book",10.5,100.5,"other")
+    Products(c)
+    var d=Product("ipad",5.0,1250.5,"other")
+    Products(d)
+    eIndices("Banana")
+    eIndices("Safe")
+
 
 }
-
-//1.Create a classCurrentAccount with the following attributes:account
-//number, account name, balance. It has the following functions:
-//a.deposit(amount: Double) - Increments the balance bythe
-//amount deposited
-//b.withdraw(amount: Double) - Decrements the balanceby the
-//amount withdrawn
-//c.details() - Prints out the account number and balanceand
-//name in this format: “Account number x with balance y is
-//operated by z
-open class current(var accNo : Int, var name:String,var balan:Int)
-
-fun deposit(amount:Double){
-    talan+=amount
-    println(talan)
-
-
-
+open class Current(var accountNumber:String,var accountName:String,var balance:Double){
+    fun deposit(amount:Double){
+        balance+=amount
+        println(balance)
+    }
+    open fun withdraw(amount: Double){
+        balance-=amount
+        println(balance)
+    }
+    fun details(){
+        println("Account number $accountNumber with balance $balance is operated by $accountName")
     }
 
-fun withdraw(amount:Double){
-    balance-=amount
-    println(amount)
 }
-fun details(x: Int,y: Int,z: String){
-    println("Account number $x with balance $y is operated by $z")
+class Savings(accountNumber: String,accountName: String,balance: Double, var withdrawal:Int):Current(accountNumber,accountName,balance){
+    override fun withdraw(amount: Double) {
+        if (withdrawal<4){
+            balance-=amount
+        }
+        println(balance)
+        withdrawal++
+    }
+}
+data class Product(var name:String, var weight:Double,var price:Double,var category:String)
+fun Products(producttt:Product){
+
+    var groceriesLists= mutableListOf<Product>()
+    var hygieneLists= mutableListOf<Product>()
+    var otherLists= mutableListOf<Product>()
+    when(producttt.category){
+        "groceries"-> groceriesLists.add(producttt)
+        "hygiene"->hygieneLists.add(producttt)
+        "other"->otherLists.add(producttt)
+    }
+    println( listOf(producttt))
 
 }
-//Create another classSavingsAccount. It has the samefunctions and
-//attributes as the current account except for one attribute,
-//withdrawals: Int. Withdrawals is a counter variablethat is used to
-//keep track of how many withdrawals have been made from the account
-//in a year. The only other difference is that the savings account
-//withdraw() method first checks if the number of withdrawalsis less
-//than 4 for it to allow one to withdraw money from the account. It also
-//increments the withdrawals attribute after a successful withdrawal
-//(5poi
-
-class savingAccount(var accNum: Int, var namr:String,var balanc:Int, var withdrawals:Int ):current(accNo,name,balan){
-    fun with(withdraw:Int){
-        if(withdraw < 4 ){
-            println(withdraw)
-}
-//A product is represented by a data class with these attributes: name,
-//weight, price, category. Category can either be groceries, hygiene or
-//other. Write a function that takes in a product and uses a when
-//statement to assign each product to a list based on its category
-//(3 points)
-data class prod(var name: String,var weight:Int,var price:Double,var category:String){
-
-}
-//4.Write a function that given a string returns a string composed of only
-//the characters in even indices. For example given “banana” it will return
-//“bnn
-fun fruits (word:String):String{
-    var name=""
-    for (letter in word){
-        if (word.indexOf(letter)%2==0){
-            name+=letter
-            println(name)
+fun eIndices(word:String):String{
+    var fruit=""
+    word.forEachIndexed { index, c ->
+        if (index%2==0){
+            fruit+=c
         }
     }
-    return name
+    println(fruit)
+    return fruit
+
 }
