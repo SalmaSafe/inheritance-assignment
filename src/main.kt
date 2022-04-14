@@ -18,8 +18,8 @@ fun main(){
 open class current(var accNo : Int, var name:String,var balan:Int)
 
 fun deposit(amount:Double){
-    balan+=amount
-    println(balan)
+    talan+=amount
+    println(talan)
 
 
 
